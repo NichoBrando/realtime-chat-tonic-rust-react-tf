@@ -1,9 +1,6 @@
 use crate::{
+    chat_manager::{ConnectRequest, ConnectResponse},
     services::chat::ChatService,
-    chat_manager::{
-        ConnectRequest,
-        ConnectResponse
-    }
 };
 use tonic::{Request, Response, Status};
 use uuid::Uuid;
@@ -15,7 +12,7 @@ pub async fn connect_to_chat(
     println!("Got a request: {:?}", request);
 
     let reply = ConnectResponse {
-        user_id: Uuid::new_v4().to_string()
+        user_id: Uuid::new_v4().to_string(),
     };
 
     let metadata = request.metadata_mut();

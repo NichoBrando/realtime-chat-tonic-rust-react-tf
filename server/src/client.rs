@@ -1,6 +1,6 @@
 use chat_manager::chat_manager_client::ChatManagerClient;
-use tonic::transport::Server;
 use services::ChatService;
+use tonic::transport::Server;
 
 mod services;
 
