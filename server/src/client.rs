@@ -1,8 +1,5 @@
-use chat_manager::chat_manager_client::ChatManagerClient;
-use services::ChatService;
-use tonic::transport::Server;
 
-mod services;
+use chat_manager::chat_manager_client::ChatManagerClient;
 
 pub mod chat_manager {
     tonic::include_proto!("chat_manager");
