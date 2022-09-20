@@ -9,8 +9,6 @@ pub async fn connect_to_chat(
     service: &ChatService,
     mut request: Request<ConnectRequest>,
 ) -> Result<Response<ConnectResponse>, Status> {
-    println!("Got a request: {:?}", request);
-
     let user_name = request.get_ref().user_name.clone().trim().to_string();
 
     if user_name.is_empty() {

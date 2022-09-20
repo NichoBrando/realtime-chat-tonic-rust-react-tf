@@ -28,7 +28,6 @@ impl ChatService {
         let receivers = { self.receivers.read().unwrap().clone() };
         let mut indexes_to_remove = Vec::new();
 
-        println!("Pushing message to {} receivers", receivers.len());
         let mut index = 0;
         for receiver in receivers.iter() {
             match receiver.send(Ok(message.clone())).await {
@@ -43,11 +42,12 @@ impl ChatService {
         let mut receivers = self.receivers.write().unwrap();
 
         let mut i = 0;
-        receivers.retain(|_| {
-            let is_receiver_disconnected = !indexes_to_remove.contains(&i);
-            i += 1;
-            is_receiver_disconnected
-        });
+        if indexes_to_remove.len() > 0 {
+            for index in indexes_to_remove.iter() {
+                receivers.remove(index - i);
+                i += 1;
+            }
+        }
     }
 }
 

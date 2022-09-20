@@ -21,7 +21,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             .unwrap()
             .into_inner();
 
-        println!("Connected to chat with id: {}", connection_response.user_id);
 
         let mut message_number = 1;
         loop {
@@ -38,8 +37,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 .await
                 .unwrap()
                 .into_inner();
-
-            println!("Sent message {}", message_number);
 
             tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;
             message_number += 1;
