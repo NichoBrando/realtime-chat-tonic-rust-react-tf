@@ -8,7 +8,7 @@ pub async fn get_chat_messages(
 ) -> Result<ReceiverStream<Result<ChatMessage, Status>>, Status> {
     let message_list = { service.messages.read().unwrap().clone() };
 
-    let (tx, rx) = tokio::sync::mpsc::channel(4);
+    let (tx, rx) = tokio::sync::mpsc::channel(1);
 
     for message in message_list {
         tx.send(Ok(message)).await.unwrap();

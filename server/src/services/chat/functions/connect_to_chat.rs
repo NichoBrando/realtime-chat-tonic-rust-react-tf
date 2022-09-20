@@ -29,7 +29,11 @@ pub async fn connect_to_chat(
 
     metadata.insert("user_id", reply.user_id.parse().unwrap());
 
-    service.user_map.write().unwrap().insert(reply.user_id.clone(), user_name);
+    service
+        .user_map
+        .write()
+        .unwrap()
+        .insert(reply.user_id.clone(), user_name);
 
     Ok(Response::new(reply))
 }

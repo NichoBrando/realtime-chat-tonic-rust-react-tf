@@ -7,7 +7,7 @@ package chat_manager;
 service ChatManager {
     rpc connect_to_chat(ConnectRequest) returns (ConnectResponse);
     rpc get_chat_messages(google.protobuf.Empty) returns (stream ChatMessage);
-    // rpc send (MessageRequest) returns (google.protobuf.Empty);
+    rpc send_message (MessageRequest) returns (google.protobuf.Empty);
 }
 
 message ChatMessage {
